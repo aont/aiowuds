@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=67", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "win-asyncio-afunix"
+version = "0.1.0"
+description = "Asyncio helpers for AF_UNIX sockets on Windows"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [{name = "win-asyncio-afunix maintainers"}]
+keywords = ["asyncio", "windows", "unix domain socket"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Framework :: AsyncIO",
+    "Topic :: System :: Networking",
+    "Operating System :: Microsoft :: Windows",
+]
+
+[project.urls]
+Homepage = "https://github.com/unknown/aiowuds"
+
+[tool.setuptools]
+py-modules = ["win_asyncio_afunix"]

@@ -1,10 +1,14 @@
-"""
-win_asyncio_afunix.py
----------------------
-Minimal asyncio-friendly AF_UNIX server/client for Windows 10+ (build 17063+).
+"""win_asyncio_afunix
+======================
 
-Uses direct Winsock bind/connect via ctypes to avoid Python's socket.bind bad-family errors,
-and integrates with asyncio's ProactorEventLoop via proactor.wait_for_handle().
+Asyncio-friendly AF_UNIX helpers for Windows 10+ (build 17063 or newer).
+
+The module wraps a handful of Winsock calls using :mod:`ctypes` so that UNIX
+domain sockets can be used on Windows without needing to drop down to the raw
+Winsock API.  It integrates with ``asyncio``'s
+``ProactorEventLoop`` via ``proactor.wait_for_handle`` to provide a familiar
+``asyncio`` experience comparable to ``loop.create_unix_connection`` on Unix
+platforms.
 """
 
 from __future__ import annotations
@@ -13,6 +17,15 @@ import os
 import socket
 import ctypes
 from ctypes import wintypes
+
+__all__ = [
+    "AFUnixStream",
+    "AFUnixServerWin",
+    "open_unix_connection_win",
+    "start_unix_server_win",
+]
+
+__version__ = "0.1.0"
 
 # ---------- constants / small helpers ----------
 SUN_PATH_MAX = 108  # traditional sockaddr_un sun_path size
