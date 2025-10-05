@@ -1,13 +1,34 @@
 # win_unix_asyncio.py
 # Experimental: AF_UNIX-like sockets on Windows + asyncio (Proactor)
 # Tested as an experimental wrapper based on user-provided sample.
+"""Asyncio helpers that emulate Unix domain sockets on Windows.
+
+This module exposes a small surface area that mirrors the standard
+``asyncio.start_unix_server`` and ``asyncio.open_unix_connection`` helpers, but
+internally falls back to a ctypes-based Winsock implementation when the native
+``AF_UNIX`` support is unavailable.  It is primarily geared towards
+experimental projects that wish to keep the same code path on Windows and
+Unix-like systems.
+"""
+
 from __future__ import annotations
+
 import asyncio
 import socket
 import ctypes
 import ctypes.wintypes
 import os
-from typing import Callable, Awaitable, Optional, Tuple
+from typing import Awaitable, Callable, Optional, Tuple
+
+__all__ = [
+    "UNIX_PATH_MAX",
+    "WindowsUnixServer",
+    "ensure_wsa_started",
+    "open_unix_connection",
+    "start_unix_server",
+]
+
+__version__ = "0.1.0"
 
 # --- minimal ctypes wrappings (based on user's sample) ---
 UNIX_PATH_MAX = 108

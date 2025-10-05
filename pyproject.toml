@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aiowuds"
+version = "0.1.0"
+description = "Async Windows Unix Domain Socket helpers for asyncio"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+  { name = "AIoWUDS Maintainers" }
+]
+keywords = ["asyncio", "windows", "unix domain socket", "networking"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Operating System :: Microsoft :: Windows",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "Topic :: System :: Networking"
+]
+
+[project.urls]
+Homepage = "https://github.com/"
+
+[tool.setuptools]
+py-modules = ["win_unix_asyncio"]

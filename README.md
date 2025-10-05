@@ -26,6 +26,20 @@ example_server.py     # Minimal echo server using WindowsUnixServer
 example_client.py     # Simple client that sends a line and prints the reply
 ```
 
+## Installation
+
+The project is published as a pure-Python package and can be installed from a
+source checkout or a packaged release:
+
+```bash
+pip install aiowuds
+```
+
+This will expose the :mod:`win_unix_asyncio` module, providing the helper
+functions and classes described below.  Because the implementation uses the
+standard library exclusively, there are no additional runtime dependencies
+beyond Python 3.9 or newer.
+
 ## Getting started
 
 The examples are written for Python 3.9+ and assume that they are executed on a
